@@ -28,4 +28,8 @@ for k,v in pairs(Constants) do
 	MySQL[k] = v
 end
 
-return MySQL
+return setmetatable(MySQL, {
+	__call = function(self, conf)
+		return self.MySQL(conf)
+	end
+})
